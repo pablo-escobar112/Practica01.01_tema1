@@ -1,0 +1,32 @@
+﻿<Window x:Class="InventoryWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:InventoryWpfApp"
+        Title="Алгебра" Height="600" Width="950" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Background="#FF2C3E50">
+            <StackPanel Margin="15">
+                <TextBlock Text="Темы" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+                <Button Content="Понятие алгебраической дроби" Command="{Binding SelectTopicCommand}" CommandParameter="1" Style="{StaticResource MenuButtonStyle}" Margin="0,3"/>
+                <Button Content="Упрощение рациональных выражений" Command="{Binding SelectTopicCommand}" CommandParameter="2" Style="{StaticResource MenuButtonStyle}" Margin="0,3"/>
+                <Button Content="Понятие квадратного корня" Command="{Binding SelectTopicCommand}" CommandParameter="3" Style="{StaticResource MenuButtonStyle}" Margin="0,3"/>
+                <Separator Background="#FF7F8C8D" Margin="0,15"/>
+                <TextBlock Text="Инструменты" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+                <Button Content="Решение квадратного уравнения" Command="{Binding SelectToolCommand}" CommandParameter="equation" Style="{StaticResource MenuButtonStyle}" Margin="0,3"/>
+                <Button Content="Таблица квадратов" Command="{Binding SelectToolCommand}" CommandParameter="squaretable" Style="{StaticResource MenuButtonStyle}" Margin="0,3"/>
+                <Separator Background="#FF7F8C8D" Margin="0,15"/>
+                <TextBlock Text="{Binding StatusText}" Foreground="#FF1ABC9C" FontSize="12" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Background="White">
+            <ContentControl Content="{Binding CurrentView}"/>
+        </Border>
+    </Grid>
+</Window>
